@@ -1,6 +1,6 @@
 # superuser :kushal,password : pass1234
 from django.db import models
-
+from django.core.urlresolvers import reverse
 # Create your models here.
 class Post(models.Model):
     title=models.CharField(max_length=120)
@@ -12,4 +12,11 @@ class Post(models.Model):
 # the initial entry of the post.
 
     def __str__(self): # this is what we see in the models table . If we dont write this the table says 'post object'
+        '''Returns a name for each instance or object inn the db as the title of our post'''
         return self.title
+
+    def get_absolute_url(self):
+        '''Returns the absolute url for templates'''
+
+        return reverse("posts:post_detail", kwargs={"id":self.id}) #posts:post_detail-->posts is the namespace 
+        #return 'posts/{}'.format(self.id)
