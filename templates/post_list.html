@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>THE ANTI-SOCIAL NETWORK</h1>
+    <p>{{ title }}</p>
+    <p>
+        {% for obj in queryset %}
+        <ul>
+            <li>{{obj.pk}}</li>
+            <!-- various ways to link a post to a url in a dynamic way. -->
+            <!--<a href="posts/{{obj.id}}">{{obj.title}}</a>-->
+            <!--{% url "posts:post_detail" id=obj.id %}-->
+            <a href="{{obj.get_absolute_url}}">{{obj.title}}</a><br/>
+            {{obj.content}}<br />
+            {{obj.timestamp}}<br />
+            {{obj.updated}}<br />
+        </ul>
+        {% endfor %}
+    </p>
+{% endblock content %}

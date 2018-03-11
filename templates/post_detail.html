@@ -1,5 +1,9 @@
-<html>
-<body>
+{%  extends 'base.html' %}
+{% block head_title %}
+{{post.title}}|{{block.super}}
+{% endblock head_title%}
+
+{% block content %}
   <h1>Post Detail</h1>
   <ul>
     <li>{{post.updated}}</li>
@@ -8,5 +12,4 @@
     <li>{{post.timestamp}}</li>
     <li>{{post.updated}}</li>
   </ul>
-</body>
-</html>
+{% endblock content %}

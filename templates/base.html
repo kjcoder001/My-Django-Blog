@@ -1,0 +1,13 @@
+<html>
+<head>
+  <title>THE ANTI-SOCIAL NETWORK</title>
+</head>
+<body>
+  {% include 'messages_display.html' %}<!-- another cool feature of templating ,i.e it can include various files so that our base.html looks cleaner!-->
+  <div class="container">
+    {% block content %} <!-- this is a reusable block / or the base block-->
+        <!--details copied to post_list.html-->
+    {% endblock content %}
+  </div>
+</body>
+</html>

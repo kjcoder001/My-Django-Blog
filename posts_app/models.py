@@ -17,6 +17,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         '''Returns the absolute url for templates'''
-
-        return reverse("posts:post_detail", kwargs={"id":self.id}) #posts:post_detail-->posts is the namespace 
+        # returns the detail of that post :- /posts/1{id}
+        return reverse("posts:post_detail", kwargs={"id":self.id}) #posts:post_detail-->posts is the namespace
         #return 'posts/{}'.format(self.id)
