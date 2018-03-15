@@ -25,3 +25,4 @@ urlpatterns = [
 # adding a namespace to our urls avoids conflicts between names of various functions if we have mutliple apps in one project etc.
 if settings.DEBUG:
     urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

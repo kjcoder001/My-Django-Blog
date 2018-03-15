@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 # Create your models here.
 class Post(models.Model):
     title=models.CharField(max_length=120)
+    image=models.FileField(null=True,blank=True)
     content=models.TextField()
     updated=models.DateField(auto_now=True,auto_now_add=False)     # datetime fields don't show up in the models of
                                                                    # admin site,as they are going to get overwritten.

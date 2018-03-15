@@ -14,7 +14,7 @@ def posts_list(request):
     '''Lists all the posts present in the database'''
 
     posts_queryset_list=Post.objects.all()
-    paginator = Paginator(posts_queryset_list, 2) # Show 25 contacts per page
+    paginator = Paginator(posts_queryset_list, 3) # Show 25 contacts per page
 
     page = request.GET.get('page')
     try:
@@ -34,18 +34,11 @@ def posts_list(request):
 
 
 
-
-
-
-def listing(request):
-    contact_list = Contacts.objects.all()
-
-
-
 def post_create(request):
     '''Creates a new Post'''
 
-    form=PostForm(request.POST or None)
+    form=PostForm(request.POST or None,request.FILES or None)# request.FILES gives us acces to the file data the user
+    # has uploaded
     if form.is_valid():
         instance=form.save(commit=False)
         instance.save()
@@ -79,7 +72,7 @@ def post_update(request,id=None):
     instance=get_object_or_404(Post,id=id)
     # get_object_or_404() parameters :- A Model class, a Manager, or a QuerySet instance from which to get the object.
 
-    form=PostForm(request.POST or None,instance=instance)
+    form=PostForm(request.POST or None,request.FILES or None,instance=instance)
     if form.is_valid():
         instance=form.save(commit=False)
         instance.save()
