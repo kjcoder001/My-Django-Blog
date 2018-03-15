@@ -23,3 +23,5 @@ urlpatterns = [
     url(r'^posts/',include('posts_app.urls',namespace='posts')),
 ]
 # adding a namespace to our urls avoids conflicts between names of various functions if we have mutliple apps in one project etc.
+if settings.DEBUG:
+    urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

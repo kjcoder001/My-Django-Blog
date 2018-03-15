@@ -1,6 +1,11 @@
+{% load staticfiles %}
 <html>
 <head>
   <title>THE ANTI-SOCIAL NETWORK</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href='{% static "css/mybase.css" % }'/>
 </head>
 <body>
   {% include 'messages_display.html' %}<!-- another cool feature of templating ,i.e it can include various files so that our base.html looks cleaner!-->
