@@ -3,6 +3,9 @@ from django.http import HttpResponse,HttpResponseRedirect
 from .models import Post
 from . forms import PostForm
 from django.contrib import messages
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render
 # Create your views here. Views are the logic of what our website does . How it handles the various requests coming to it , e.g GET POST etc.
 # Basically views are python functions that accept a request and render or return a response.Which view will be called up for a particular
 # request depends on the mapping of the urls. Each view is mapped to a unique url.
@@ -10,11 +13,33 @@ from django.contrib import messages
 def posts_list(request):
     '''Lists all the posts present in the database'''
 
-    posts_queryset=Post.objects.all()
+    posts_queryset_list=Post.objects.all()
+    paginator = Paginator(posts_queryset_list, 2) # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        posts_queryset = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts_queryset = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts_queryset = paginator.page(paginator.num_pages)
+
+
     context={'title':'Lists all the posts',
              'queryset':posts_queryset}
 
     return render(request,'post_list.html',context)
+
+
+
+
+
+
+def listing(request):
+    contact_list = Contacts.objects.all()
+
 
 
 def post_create(request):

@@ -20,3 +20,6 @@ class Post(models.Model):
         # returns the detail of that post :- /posts/1{id}
         return reverse("posts:post_detail", kwargs={"id":self.id}) #posts:post_detail-->posts is the namespace
         #return 'posts/{}'.format(self.id)
+
+    class Meta:
+        ordering=["-timestamp","-updated",]

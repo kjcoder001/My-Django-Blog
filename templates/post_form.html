@@ -2,11 +2,11 @@
 
 {% block content %}
   <h1>Form</h1>
-
+<div class="col-sm-10 col-sm-offset-5 ">
   <form method="post">
       {% csrf_token %}
       {{form.as_p}}
-      <input type="submit" value="Create Post" />
+      <input type="submit" class="btn btn-submit" value="Create Post" />
   </form>
-
+</div>
 {% endblock content%}
